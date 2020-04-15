@@ -1,0 +1,43 @@
+.post-body {
+    margin-top: 30px;
+}
+
+.p-cm {
+    color: rgb(150, 140, 150);
+    font-size: 14px;
+}
+
+.div-cm {
+    margin: 20px;
+    padding: 10px;
+    border: rgb(163, 161, 161) 1px solid;
+    border-radius: 10px;
+}
+
+.cm-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.cm-sender-u-name {
+    position: absolute;
+    margin: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cm-span {
+    color: rgb(59, 59, 57);
+}
+
+.cm-sharing-time {
+    color: rgb(160, 157, 160);
+    font-size: 13px;
+}
+
+.cm-form{
+    text-align: center;
+}
+.cm-text {
+    width: 60%;
+}
