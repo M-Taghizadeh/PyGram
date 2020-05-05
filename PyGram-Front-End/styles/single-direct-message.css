@@ -1,0 +1,65 @@
+.direct{
+    margin-top: 10px;
+    background-color: rgb(236, 231, 226);
+    border-radius: 10px;
+}
+
+.direct-header{
+    text-align: center;
+}
+
+.user-avatar{
+    height: 65px;
+    width: 65px;
+    margin: 10px;
+}
+
+.sender-name{
+    font-weight: bold;
+    position: absolute;
+    margin-top: 40px;
+}
+
+.messages-body{
+    margin-bottom: 30px;
+}
+
+.single-message{
+    height: 100px;
+    margin-top: 20px;
+}
+
+.user-message{
+    /* background-color: cornsilk; */
+    border-radius: 20px;
+}
+
+.user-message-p{
+    background-color: rgb(14, 109, 112);
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.my-message{
+    /* background-color: rgb(10, 165, 100); */
+    border-radius: 20px;
+}
+
+.my-message-p{
+    background-color: rgb(20, 143, 106);
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.send-message{
+    margin: 20px;
+    margin-top: 100px;
+}
+
+.text-message{
+    width: 99%;
+    height: 100px;
+    resize: none;
+}

@@ -1,0 +1,32 @@
+.f-body {
+    margin-top: 40px;
+    border: rgb(199, 199, 196) 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.f-span {
+    font-weight: bold;
+}
+
+.scroller {
+    overflow: auto; 
+    min-height: 1px; 
+    max-height: 600px; 
+    background-color: rgb(241, 241, 241);
+}
+
+.user-avatar{
+    margin: 30px;
+    width: 90%;
+    margin-right: 100px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 100%;
+    padding: 10%;
+
+}

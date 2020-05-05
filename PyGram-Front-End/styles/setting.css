@@ -1,0 +1,18 @@
+.avatar {
+    width: 10%;
+    height: 10%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 170px;
+}
+
+.span-change-avatar {
+    color: rgb(80, 79, 79);
+    margin: 20px;
+}
+
+.setting-form {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+}
