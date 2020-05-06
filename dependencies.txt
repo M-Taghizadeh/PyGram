@@ -1,0 +1,9 @@
+>>> flask               => web framework
+>>> python-dotenv       => for read dotenv files
+>>> flask-sqlalchemy    => orm
+>>> mysqlclient|pymysql => mysql connector
+>>> flask-migrate       => database migration 
+>>> flask-jwt-extended  => for Authorization (access and refreshh token)
+>>> flask-mail          => for sending email
+>>> redis               => we use this nosql database for saving users registration token
+>>> flask_whooshalchemy => search engine 
