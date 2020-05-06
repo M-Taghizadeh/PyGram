@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Message</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/single-direct-message.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="row head-row">
+            <header class="head">
+                <a href="{{ url_for('profile.profile_index', username=loged_in_user.username)}}" class="button">
+                    <figure>
+                        <img class="head-avatar" src="{{ loged_in_user.avatar }}" alt="Image description" />
+                        <figcaption>{{ loged_in_user.username }}</figcaption>
+                    </figure>
+                </a>
+                <a href="{{ url_for('direct.direct_index', username=loged_in_user.username) }}" class="button">Direct Messages</a>
+                <a href="{{ url_for('post.post_index', username=loged_in_user.username) }}" class="button">Posts</a>
+                <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followers</a>
+                <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followings</a>
+                <a href="{{ url_for('setting.setting_index', username=loged_in_user.username ) }}" class="button">Setting</a>
+            </header>
+        </div>
+
+        <!-- Search in Site  -->
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="{{ url_for('index') }}">
+                            <img class="pygram" src="/static/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-10">
+                        <form class="search-form" action="{{ url_for('search.search') }}", method="GET">
+                            <input type="submit" value="Search">
+                            <input class="search-txt" type="text" name="q">
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Search in Site  -->
+        <!-- End Header -->
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 direct">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-5 direct-header">
+                        <a href="{{ url_for('user_page.user_page_index', username=user.username) }}" class="button">
+                            <img class="user-avatar" src="{{ user.avatar }}">
+                        </a>
+                        <span class="sender-name">{{ user.username }}</spanp>
+                    </div>
+                </div>
+
+                <div class="row messages-body">
+                    <div class="col-sm-12">
+                        
+                        {% for message in messages %}
+                        <!-- Single Message  -->
+                        <div class="row single-message">
+                            
+                            <!-- User Message  -->
+                            <div class="col-sm-6 user-message">
+                            {% if message.sender_username == user.username %}
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <img class="user-avatar" src="{{ user.avatar }}" alt="">
+                                </div>
+                                <div class="col-sm-10">
+                                    <p class="user-message-p">{{ message.message_text }}</p>
+                                    <p class="message-date">{{ message.sending_date }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            </div>
+        
+                            <!-- Separateor -->
+                            <div class="col-sm-1"></div>
+                            
+                            <!-- My Message  -->
+                            <div class="col-sm-5 my-message">
+                            {% if message.sender_username == loged_in_user.username %}
+                                <p class="my-message-p">{{ message.message_text }}</p>
+                                <p class="message-date">{{ message.sending_date }}</p>
+                            {% endif %}
+                            </div>
+
+                        </div>
+                        <!-- End of Single Message  -->
+                        {% endfor %}
+
+                        <!-- Send Message  -->
+                        <form class="send-message" action="{{ url_for('direct.send_message', username=user.username) }}", method="POST">
+                            <textarea class="text-message" name="message_text"></textarea>
+                            <div style="text-align: center;" class="col-sm-12"><input type="submit" value="Send Message"></div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

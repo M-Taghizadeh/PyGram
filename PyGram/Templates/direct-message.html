@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/direct-message.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row head-row">
+            <header class="head">
+                <a href="{{ url_for('profile.profile_index', username=user.username)}}" class="button">
+                    <figure>
+                        <img class="head-avatar" src="{{ user.avatar }}" alt="Image description" />
+                        <figcaption>{{ user.username }}</figcaption>
+                    </figure>
+                </a>
+                <a href="{{ url_for('direct.direct_index', username=user.username) }}" class="button">Direct Messages</a>
+                <a href="{{ url_for('post.post_index', username=user.username) }}" class="button">Posts</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followers</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followings</a>
+                <a href="{{ url_for('setting.setting_index', username=user.username ) }}" class="button">Setting</a>
+            </header>
+        </div> <!-- End of Header -->
+
+        <!-- Search in Site  -->
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="{{ url_for('index') }}">
+                            <img class="pygram" src="/static/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-10">
+                        <form class="search-form" action="{{ url_for('search.search') }}", method="GET">
+                            <input type="submit" value="Search">
+                            <input class="search-txt" type="text" name="q">
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Search in Site  -->
+
+        <!-- Users Messages -->
+        {% for direct_message in direct_messages %}
+        <a href="{{ url_for('direct.chat', username=direct_message.sender.username) }}">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 message-row">
+                    <img class="user-avatar" src="{{ direct_message.sender.avatar    }}" alt="">
+                    <span class="sender-name">{{ direct_message.sender.username }}</span>
+                    <span class="last-message">{{ direct_message.message_text|truncate(100, '...') }}</span>
+                    <p class="sharing-time">{{ direct_messages.sending_date }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div> <!-- End of Container -->
+
+</body>
+</html>

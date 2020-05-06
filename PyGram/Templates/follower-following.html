@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Followers and Following</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/follower-following.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="row head-row">
+        <header class="head">
+            <a href="{{ url_for('profile.profile_index', username=user.username)}}" class="button">
+                <figure>
+                    <img class="head-avatar" src="{{ user.avatar }}" alt="Image description" />
+                    <figcaption>{{ user.username }}</figcaption>
+                </figure>
+            </a>
+            <a href="{{ url_for('direct.direct_index', username=user.username) }}" class="button">Direct Messages</a>
+            <a href="{{ url_for('post.post_index', username=user.username) }}" class="button">Posts</a>
+            <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followers</a>
+            <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followings</a>
+            <a href="{{ url_for('setting.setting_index', username=user.username ) }}" class="button">Setting</a>
+        </header>
+    </div>
+    <!-- End Header  -->
+
+    <!-- Follower and Following row  -->
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5 f-body">
+            <span class="f-span">Followers</span>
+            <span class="f-span">{{ followers|length }}</span>
+            <hr>
+            <div class="scroller">
+                <!-- Follower -->
+                {% for follower in followers %}
+                <a href="{{ url_for('user_page.user_page_index', username=follower.follower.username) }}" style="text-decoration: none;">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img class="user-avatar" src="{{ follower.follower.avatar }}" alt="">
+                        </div>  
+                        <div class="col-sm-8"><br><br>
+                            <span class="user-name">{{ follower.follower.username }}</span>
+                        </div>
+                    </div>
+                </a>
+                <hr>
+                <!-- End of Follower -->
+                {% endfor %}
+            </div>
+        </div>
+        <!-- End Follower col  -->
+        <!-- Following col -->
+        <div class="col-sm-5 f-body">
+            <span class="f-span">Following</span>
+            <span class="f-span">{{ followings|length }}</span>
+            <hr>
+            <div class="scroller">
+                <!-- Following -->
+                {% for following in followings %}
+                <a href="{{ url_for('user_page.user_page_index', username=following.following.username) }}" style="text-decoration: none;">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img class="user-avatar" src="{{ following.following.avatar }}" alt="">
+                        </div>  
+                        <div class="col-sm-8"><br><br>
+                            <span class="user-name">{{ following.following.username }}</span>
+                        </div>
+                    </div>
+                </a>
+                <hr>
+                <!-- End of Following -->
+                {% endfor %}
+            </div>
+        </div>
+        <!-- End Following col -->
+
+    </div>
+    <!-- End Follower and Following row  -->
+
+
+
+</body>
+</html>

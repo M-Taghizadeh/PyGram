@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/search.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="row head-row">
+            <header class="head">
+                <a href="{{ url_for('profile.profile_index', username=loged_in_user.username)}}" class="button">
+                    <figure>
+                        <img class="head-avatar" src="{{ loged_in_user.avatar }}" alt="Image description" />
+                        <figcaption>{{ loged_in_user.username }}</figcaption>
+                    </figure>
+                </a>
+                <a href="{{ url_for('direct.direct_index', username=loged_in_user.username) }}" class="button">Direct Messages</a>
+                <a href="{{ url_for('post.post_index', username=loged_in_user.username) }}" class="button">Posts</a>
+                <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followers</a>
+                <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followings</a>
+                <a href="{{ url_for('setting.setting_index', username=loged_in_user.username ) }}" class="button">Setting</a>
+            </header>
+        </div>
+
+        <!-- Search in Site  -->
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="{{ url_for('index') }}">
+                            <img class="pygram" src="/static/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-10">
+                        <form class="search-form" action="{{ url_for('search.search') }}", method="GET">
+                            <input type="submit" value="Search">
+                            <input class="search-txt" type="text" name="q">
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Search in Site  -->
+        <!-- End Header -->
+
+        <!-- Result Number -->
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 result-number">{{ users.total }} results found</div>
+            </div>
+        <!-- End Result Number -->
+
+        <!-- Result -->
+        {% for user in users.items %} <!-- items because users is pagination object -->
+        <a href="{{ url_for('user_page.user_page_index', username=user.username) }}">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 result-row">
+                    <img class="user-avatar" src="{{ user.avatar }}" alt="">
+                    <span class="result-user-name">{{ user.username }}</span>
+                    <span class="result-name">{{ user.name }}</span>
+                    <span class="result-lastname">{{ user.lastname }}</span>
+                </div>
+            </div>
+        </a>
+        <!-- End Result -->
+        {% endfor %}
+
+        <!-- pagination -->
+        <br><br><br>
+        <div style="text-align: center;">
+        {% for page in range(1, users.pages+1) %}
+        <a href="{{ url_for('search.search',q=q, p=page) }}"><button class="primary">{{page}}</button></a></span>
+        {% endfor %}
+        <!-- end of pagination -->
+</div>
+</body>
+</html>

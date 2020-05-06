@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyGram Setting</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/setting.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="row">
+            <header class="head">
+                <a href="{{ url_for('profile.profile_index', username=user.username)}}" class="button">
+                    <figure>
+                        <img class="head-avatar" src="{{ user.avatar }}" alt="Image description" />
+                        <figcaption>{{ user.username }}</figcaption>
+                    </figure>
+                </a>
+                <a href="{{ url_for('direct.direct_index', username=user.username) }}" class="button">Direct Messages</a>
+                <a href="{{ url_for('post.post_index', username=user.username) }}" class="button">Posts</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followers</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followings</a>
+                <a href="{{ url_for('setting.setting_index', username=user.username ) }}" class="button">Setting</a>
+            </header>
+        </div>
+
+        <!-- Settings -->
+        <img class="avatar" src="{{ user.avatar }}" alt="">
+        <form class="setting-form" enctype="multipart/form-data" action="{{ url_for('setting.setting_index', username=user.username) }}" method="POST">
+            <span class="span-change-avatar">Change Your Avatar</span>
+            <input type="file" name="filename">
+            <input type="submit" value="Change Profile">
+        </form>
+        <!-- End of Settings -->
+
+    </div>
+    
+</body>
+</html>

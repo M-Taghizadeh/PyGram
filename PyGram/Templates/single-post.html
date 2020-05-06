@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/single-post.css">
+    <link rel="stylesheet" href="/static/styles/profile.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="row head-row">
+        <header class="head">
+            <a href="{{ url_for('profile.profile_index', username=loged_in_user.username)}}" class="button">
+                <figure>    
+                    <img class="head-avatar" src="{{ loged_in_user.avatar }}" alt="Image description" />
+                    <figcaption>{{ loged_in_user.username }}</figcaption>
+                </figure>
+            </a>
+            <a href="{{ url_for('direct.direct_index', username=loged_in_user.username) }}" class="button">Direct Messages</a>
+            <a href="{{ url_for('post.post_index', username=loged_in_user.username) }}" class="button">Posts</a>
+            <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followers</a>
+            <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followings</a>
+            <a href="{{ url_for('setting.setting_index', username=loged_in_user.username ) }}" class="button">Setting</a>
+        </header>
+    </div>
+    <!-- End Header -->
+
+    <!-- Posts -->
+    <div class="row" class="post-row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 post-body">
+            <div class="row">
+                <div class="col-sm-10">
+
+                    <a href="" class="button">
+                        <img class="post-avatar" src="{{ user.avatar }}" alt="">
+                        <span class="user-name">{{ user.username }}</span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="row">
+                <img class="post-img" src="{{ post.picture }}" alt="">
+            </div>
+            <div class="row">
+                <p>{{ post.caption }}</p>
+            </div>
+            <hr>
+            <p class="like-number">Liked by {{ likes }} people</p>
+            <div class="row">
+                <div class="col-sm-1 like">
+                    <a href="{{ url_for('post.like', username=user.username, date=post.post_date) }}">
+                        <img src="/static/img/like.webp">
+                    </a>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1 cm">
+                    <img class="img-cm" src="/static/img/cm.png" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <p class="sharing-time">{{ post.post_date }}</p>
+            </div>
+
+            <!-- Comments -->
+            <hr>
+            <p class="p-cm">Comments</p>
+            {% for comment in comments %}
+            <div class="row">
+                <div class="col-sm-11 div-cm">
+                    <img class="cm-avatar" src="{{ comment.sender.avatar }}" alt="">
+                    <span class="cm-sender-u-name">{{ comment.sender.username }}</span><br><br>
+                    <span class="cm-span">{{ comment.text }}</span>
+                    <div class="row">
+                        <p class="cm-sharing-time">{{ comment.cm_date }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- End Comments -->
+
+            <!-- Send Comment -->
+            <form class="cm-form" action="{{ url_for('post.comment', username=user.username, date=post.post_date) }}", method="POST">
+                <input class="cm-text" type="text" name="cm_text" placeholder="your comment..">
+                <input class="cm-btn" type="submit" value="Send">
+            </form>
+            <!-- End Send Comment -->
+
+        </div>
+    </div>
+
+</body>
+
+</html>

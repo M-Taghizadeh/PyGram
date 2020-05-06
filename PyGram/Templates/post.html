@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/post.css">
+    <link rel="stylesheet" href="/static/styles/single-user-page.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="row head-row">
+        <header class="head">
+            <a href="{{ url_for('profile.profile_index', username=user.username)}}" class="button">
+                <figure>
+                    <img class="head-avatar" src="{{ user.avatar }}" alt="Image description" />
+                    <figcaption>{{ user.username }}</figcaption>
+                </figure>
+            </a>
+            <a href="{{ url_for('direct.direct_index', username=user.username) }}" class="button">Direct Messages</a>
+            <a href="{{ url_for('post.post_index', username=user.username) }}" class="button">Posts</a>
+            <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followers</a>
+            <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followings</a>
+            <a href="{{ url_for('setting.setting_index', username=user.username ) }}" class="button">Setting</a>
+        </header>
+    </div>
+    <!-- End Header -->
+
+    <!-- User page Header -->
+    <div class="row user-page-header-row">
+        <div class="col-sm-12 user-page-header">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="user-avatar" src="{{ user.avatar }}" alt="">
+                </div>
+                <div class="col-sm-8 user-info">
+                    <span class="page-header-span"><span class="span-number">{{ posts|length }}</span> Posts</span>
+                    <span class="page-header-span"><span class="span-number">{{ follower_number }}</span> Followers</span>
+                    <span class="page-header-span"><span class="span-number">{{ following_number }}</span> Following</span>
+                    <a href="{{ url_for('post.new_post', username=user.username) }}"><button>New Post</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End User page Header -->
+
+    <!-- User posts summary -->
+    <div class="row user-posts-row">
+
+        {% for post in posts %}
+        <div class="col-sm-4">
+            <div class="row">
+                <a href="{{ url_for('post.single_post', username=user.username, date=post.post_date)}}"><img class="post-img" src="{{ post.picture }}" alt=""></a><br>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2">
+                    <a href="{{ url_for('post.delete_post', username=user.username, date=post.post_date) }}"><img class="img-delete" src="/static/img/delete.png" alt=""></a>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <a href=""><img class="img-edit" src="/static/img/edit.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- End User posts summary -->
+
+</body>
+</html>

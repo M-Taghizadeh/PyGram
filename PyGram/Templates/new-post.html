@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/new-post.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="row head-row">
+        <header class="head">
+            <a href="{{ url_for('profile.profile_index', username=user.username)}}" class="button">
+                <figure>
+                    <img class="head-avatar" src="{{ user.avatar }}" alt="Image description" />
+                    <figcaption>{{ user.username }}</figcaption>
+                </figure>
+            </a>
+            <a href="{{ url_for('direct.direct_index', username=user.username) }}" class="button">Direct Messages</a>
+                <a href="{{ url_for('post.post_index', username=user.username) }}" class="button">Posts</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followers</a>
+                <a href="{{ url_for('follow.follow_index', username=user.username) }}" class="button">Followings</a>
+                <a href="{{ url_for('setting.setting_index', username=user.username ) }}" class="button">Setting</a>
+        </header>
+    </div>
+    <!-- End Header  -->
+
+    <!-- New Post -->
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <form class="form-new-post" enctype="multipart/form-data" action="{{ url_for('post.new_post', username=user.username) }}", method="POST">
+                <img class="choose-tap" src="/static/img/tap.png">
+                <input class="file" name="picture" type="file"/>
+                <textarea class="text-area" name="caption" placeholder="Post Caption..." ></textarea><br>
+                <input type="submit" value="Share Post"><br>    
+            </form>
+        </div>
+    </div>
+    <!-- End New Post -->
+    
+</body>
+</html>

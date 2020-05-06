@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user.username</title>
+    <link rel="stylesheet" href="/static/styles/mini-default.min.css">
+    <link rel="stylesheet" href="/static/styles/style-header.css">
+    <link rel="stylesheet" href="/static/styles/single-user-page.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="row head-row">
+        <header class="head">
+            <a href="{{ url_for('profile.profile_index', username=loged_in_user.username)}}" class="button">
+                <figure>
+                    <img class="head-avatar" src="{{ loged_in_user.avatar }}" alt="Image description" />
+                    <figcaption>{{ loged_in_user.username }}</figcaption>
+                </figure>
+            </a>
+            <a href="{{ url_for('direct.direct_index', username=loged_in_user.username) }}" class="button">Direct Messages</a>
+            <a href="{{ url_for('post.post_index', username=loged_in_user.username) }}" class="button">Posts</a>
+            <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followers</a>
+            <a href="{{ url_for('follow.follow_index', username=loged_in_user.username) }}" class="button">Followings</a>
+            <a href="{{ url_for('setting.setting_index', username=loged_in_user.username ) }}" class="button">Setting</a>
+            <a href="{{ url_for('profile.logout') }}" class="button">Logout</a>
+        </header>
+    </div>
+    <!-- End Header -->
+
+    <!-- User page Header -->
+    <div class="row user-page-header-row">
+        <div class="col-sm-12 user-page-header">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="user-avatar" src="{{ user.avatar }}" alt="">
+                </div>
+                <div class="col-sm-8 user-info">
+                    <div class="row">
+                        <span class="span-username">{{ user.username }}</span>
+                        {% if not flag_followed %}
+                            <a href="{{ url_for('user_page.follow_process', username=user.username) }}" class="btn_set"><span class="btn_set_span">Follow</span></a>
+                        {% else %}
+                            <a href="{{ url_for('user_page.unfollow_process', username=user.username) }}" class="btn_unset"><span class="btn_unset_span">Unfollow</span></a>
+                        {% endif %}
+                    </div>
+                    <span class="page-header-span"><span class="span-number">{{ posts|length }}</span> Posts</span>
+                    <span class="page-header-span"><span class="span-number">{{ follower_number }}</span> Followers</span>
+                    <span class="page-header-span"><span class="span-number">{{ following_number }}</span> Following</span>
+                    <a href="{{ url_for('direct.chat', username=user.username) }}"><button>Send Direct Message</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End User page Header -->
+
+    <!-- User posts summary -->
+    <div class="row user-posts-row">
+        {% for post in posts %}
+        <div class="col-sm-4">
+            <a href="{{ url_for('post.single_post', username=user.username, date=post.post_date) }}"><img class="post-img" src="{{ post.picture }}" alt=""></a>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- End User posts summary -->
+
+</body>
+</html>
