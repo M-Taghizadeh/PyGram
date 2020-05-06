@@ -1,0 +1,77 @@
+.direct{
+    margin-top: 10px;
+    background-color: rgb(236, 231, 226);
+    border-radius: 10px;
+}
+
+.direct-header{
+    text-align: center;
+}
+
+.user-avatar{
+    height: 65px;
+    width: 65px;
+    margin: 10px;
+}
+
+.sender-name{
+    font-weight: bold;
+    position: absolute;
+    margin-top: 40px;
+}
+
+.messages-body{
+    margin-bottom: 30px;
+}
+
+.single-message{
+    
+    margin-top: 20px;
+}
+
+.user-message{
+    /* background-color: cornsilk; */
+    border-radius: 20px;
+}
+
+.user-message-p{
+    background-color: rgb(60, 80, 95);
+    border-radius: 20px 20px 20px 0;
+    padding: 10px;
+    color: white;
+}
+
+.message-date {
+    color: rgb(145, 145, 145);
+    font-size: 12px;
+    text-align: right;
+    margin-right: 40px;
+}
+
+.user-message-avatar{
+    width: 50%;
+    height: 50%;
+}
+
+.my-message{
+    /* background-color: rgb(10, 165, 100); */
+    border-radius: 20px 20px 20px 0;
+}
+
+.my-message-p{
+    background-color: rgb(20, 143, 106);
+    border-radius: 20px 20px 0 20px;
+    padding: 10px;
+    color: white;
+}
+
+.send-message{
+    margin: 20px;
+    margin-top: 130px;
+}
+
+.text-message{
+    width: 99%;
+    height: 100px;
+    resize: none;
+}

@@ -1,0 +1,37 @@
+a:link{
+    text-decoration: none;
+}
+.message-row{
+    margin-bottom: 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
+
+.message-row:hover{
+    background-color: rgb(224, 224, 224);
+}
+
+.user-avatar{
+    height: 65px;
+    width: 65px;
+    margin: 10px;
+}
+
+.sender-name{
+    font-weight: bold;
+    position: absolute;
+    margin-top: 30px;
+}
+
+.last-message{
+    color: rgb(131, 125, 125);
+    margin-top: 55px;
+    position: absolute;
+    font-size: 95%;
+}
+
+.sharing-time{
+    color: rgb(32, 30, 30);
+    font-size: 12px;
+    margin-left: 20px;
+}

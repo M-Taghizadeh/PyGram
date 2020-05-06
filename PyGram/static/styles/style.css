@@ -1,0 +1,61 @@
+body{
+    background-image: url("../img/bg2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#index-form{
+    text-align: center;
+}
+
+.mylogo{
+    height: 40px;
+}
+
+.pygram{
+    width: 120px;
+    overflow: hidden;                                               
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
+
+.pygram:hover{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+.header-item{
+    margin-top: 100px;
+}
+
+.form{
+    margin-top: 20%;
+}
+
+.toast{
+    margin-bottom: 40px;
+    width: 40%;
+    text-align: center;
+}
+
+.btn{
+    border: rgb(108, 108, 112) solid 1px;
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 20px;
+    color: cornsilk;
+    font-weight: bold;
+    background-color: rgb(7, 155, 106);
+}
+
+.btn:hover{
+    background-color: cornsilk;
+    border: rgb(56, 56, 56) solid 1px;
+    color: rgb(7, 155, 106);
+}
+
+a:hover{
+    text-decoration: none;
+}
