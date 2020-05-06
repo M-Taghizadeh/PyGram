@@ -49,36 +49,36 @@ PyGram
     ├───config.py
     ├───mod_direct_message
     │   ├───__init__.py
-    |   └───controller.py
+    │   └───controller.py
     ├───mod_follow
-    |   ├───__init__.py
-    |   └───controller.py
+    │   ├───__init__.py
+    │   └───controller.py
     ├───mod_post
-    |   ├───__init__.py
-    |   └───controller.py
+    │   ├───__init__.py
+    │   └───controller.py
     ├───mod_profile
-    |   ├───__init__.py
-    |   └───controller.py
+    │   ├───__init__.py
+    │   └───controller.py
     ├───mod_search
-    |   ├───__init__.py
-    |   └───controller.py
+    │   ├───__init__.py
+    │   └───controller.py
     ├───mod_setting
-    |   ├───__init__.py
-    |   └───controller.py
+    │   ├───__init__.py
+    │   └───controller.py
     ├───mod_user_page
     │   ├───__init__.py
-    |   └───controller.py
+    │   └───controller.py
     ├───static
-    |   ├───Site-Screen
+    │   ├───Site-Screen
     │   ├───img
     │   ├───styles
-    |   |    └───all of css files..
+    │   │    └───all of css files..
     │   └───upload
     │       ├───dir_of_user1
     │       ├───dir_of_user2
     │       └───dir_of_user3
     ├───Templates
-    |   └───all of html files..
+    │   └───all of html files..
     └───utils
         ├───check_auth.py
         ├───registration.py
