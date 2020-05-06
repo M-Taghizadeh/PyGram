@@ -1,0 +1,24 @@
+Endpoint                    Methods    Rule
+--------------------------  ---------  ----------------------------------------------
+direct.chat                 GET        /direct/chat/<string:username>
+direct.direct_index         GET        /direct/<string:username>
+direct.send_message         POST       /direct/send_message/<string:username>
+follow.follow_index         GET        /follow/<string:username>
+index                       GET        /
+login                       GET, POST  /login/
+post.comment                POST       /post/comment/<string:username>/<string:date>
+post.delete_post            GET        /post/delete/<string:username>/<string:date>
+post.like                   GET        /post/like/<string:username>/<string:date>
+post.new_post               GET, POST  /post/new/<string:username>
+post.post_index             GET        /post/<string:username>
+post.single_post            GET        /post/single/<string:username>/<string:date>
+profile.logout              GET        /profile/logout/
+profile.profile_index       GET        /profile/<string:username>
+search.search               GET        /search/search/
+setting.setting_index       GET, POST  /setting/<string:username>
+signup                      GET, POST  /signup/
+signup_process              GET        /signup-process/
+static                      GET        /static/<path:filename>
+user_page.follow_process    GET        /user_page/follow-process/<string:username>/
+user_page.unfollow_process  GET        /user_page/unfollow-process/<string:username>/
+user_page.user_page_index   GET        /user_page/<string:username>
